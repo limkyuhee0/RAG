@@ -1,0 +1,11 @@
+services:
+  agent:
+    build: .
+    container_name: rag_evaluator
+    working_dir: /app
+    volumes:
+      - "./data:/app/data"  # 컨테이너 내부에서 /app/data 경로로 마운트
+      - "./output:/app/output"
+    env_file:  # 📌 환경 변수 파일 추가!
+      - .env
+    command: ["./run.sh"]
